@@ -1,0 +1,58 @@
+server:
+  port: 8066
+spring:
+  #上传文件的大小
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+  # datasource 数据源配置内容
+  datasource:
+    #本地的数据库
+    #url: jdbc:mysql://192.168.1.143:3306/class?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    #阿里云的数据库
+    url: jdbc:mysql://39.99.166.182:3306/class?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    #本地数据库的密码
+    #password: Cosmos@123
+    #阿里云数据库的密码
+    password: Cosmos@666
+  # JPA 配置内容，对应 JpaProperties 类
+  jpa:
+    show-sql: false
+    # 打印 SQL 。生产环境，建议关闭
+    # Hibernate 配置内容，对应 HibernateProperties 类
+    hibernate:
+      ddl-auto: none
+
+  redis:
+    # Redis默认情况下有16个分片，这里配置具体使用的分片。默认是索引为0的分片
+    database: 1
+    # Redis服务器地址
+    #本地的redis
+    #host: 192.168.1.143
+    #阿里云的redis
+    host: 39.99.166.182
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password: cosmos@666
+    # 连接超时时间（毫秒）
+    timeout: 2000s
+
+    # 配置文件中添加 lettuce.pool 相关配置，则会使用到lettuce连接池
+    lettuce:
+      pool:
+        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+        max-wait: 60s
+        # 连接池中的最大空闲连接 默认 8
+        max-idle: 10
+        # 连接池中的最小空闲连接 默认 0
+        min-idle: 10
+        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+        max-activ: 8
+
+
